@@ -96,8 +96,6 @@ public class TicTacToe {
             humanTurn = true;
             playerX.pickCoordinate();
         }
-
-        printField();
     }
 
     private void playerOTurn() {
@@ -107,8 +105,6 @@ public class TicTacToe {
             humanTurn = true;
             playerO.pickCoordinate();
         }
-
-        printField();
     }
 
     public void markCoordinate(Coordinate coordinate) {
