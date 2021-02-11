@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="400.0" maxWidth="500.0" minHeight="400.0" minWidth="500.0" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.raul.controllers.MainMenu">
+   <bottom>
+      <AnchorPane prefHeight="49.0" prefWidth="500.0">
+         <children>
+            <Button fx:id="startGameBt" alignment="CENTER_RIGHT" disable="true" layoutX="379.0" layoutY="10.0" mnemonicParsing="false" onAction="#startGameBtAction" text="Start game" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="30.0" />
+            <Button layoutX="30.0" layoutY="10.0" mnemonicParsing="false" onAction="#exitBtAction" text="Exit" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="30.0" />
+         </children></AnchorPane>
+   </bottom>
+   <top>
+      <AnchorPane prefHeight="96.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="138.0" layoutY="33.0" text="TicTacToe">
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="255.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="playerXLbl" layoutX="142.0" layoutY="42.0" text="X">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="playerOLbl" layoutX="344.0" layoutY="42.0" text="O">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <VBox layoutX="85.0" layoutY="75.0" prefHeight="137.0" prefWidth="107.0" spacing="10.0" AnchorPane.leftAnchor="95.0">
+               <children>
+                  <ToggleButton mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Easy Bot">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="playerXGp" />
+                     </toggleGroup>
+                  </ToggleButton>
+                  <ToggleButton mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Medium Bot" toggleGroup="$playerXGp" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Hard Bot" toggleGroup="$playerXGp" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Human Being" toggleGroup="$playerXGp" />
+               </children>
+            </VBox>
+            <VBox layoutY="75.0" prefHeight="135.0" prefWidth="107.0" spacing="10.0" AnchorPane.rightAnchor="95.0">
+               <children>
+                  <ToggleButton mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Easy Bot">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="playerOGp" />
+                     </toggleGroup>
+                  </ToggleButton>
+                  <ToggleButton mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Medium Bot" toggleGroup="$playerOGp" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Hard Bot" toggleGroup="$playerOGp" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Human Being" toggleGroup="$playerOGp" />
+               </children>
+            </VBox>
+         </children></AnchorPane>
+   </center>
+</BorderPane>

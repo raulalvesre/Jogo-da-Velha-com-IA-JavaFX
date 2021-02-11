@@ -1,0 +1,73 @@
+plugins {
+    // Apply the application plugin to add support for building a CLI application in Java.
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.9'
+
+}
+
+java {
+    compileJava.options.encoding = 'UTF-8'
+    sourceCompatibility = JavaVersion.VERSION_14
+    targetCompatibility = JavaVersion.VERSION_14
+    modularity.inferModulePath.set(true)
+}
+
+repositories {
+    // Use JCenter for resolving dependencies.
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    // Use JUnit test framework.
+    testImplementation 'junit:junit:4.13'
+
+    // This dependency is used by the application.
+    implementation 'com.google.guava:guava:29.0-jre'
+}
+
+javafx {
+    version = "15.0.1"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = 'org.raul.App'
+    mainModule = 'org.raul'
+}
+
+def moduleVersion = project.version
+sourceSets {
+    main {
+        java {
+            srcDirs = ["src/main/java"]
+        }
+        resources {
+            srcDirs = ["src/main/java", "src/main/resources"]
+        }
+    }
+    test {
+        java {
+            srcDirs = ["src/test/java"]
+        }
+        resources {
+            srcDirs = ["src/test/resources"]
+        }
+    }
+
+    // at compile time, put resources in same directories as classes
+    main.output.resourcesDir = main.java.outputDir
+}
+
+// at run time, make Gradle use the module path
+run {
+    inputs.property("moduleName", moduleName)
+    doFirst {
+        jvmArgs = [
+                '--module-path', classpath.asPath,
+                '--module', "$moduleName/$mainClassName"
+        ]
+        classpath = files()
+    }
+}
