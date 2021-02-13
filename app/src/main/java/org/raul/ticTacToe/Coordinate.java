@@ -1,4 +1,4 @@
-package org.raul.coordinates;
+package org.raul.ticTacToe;
 
 public class Coordinate {
 

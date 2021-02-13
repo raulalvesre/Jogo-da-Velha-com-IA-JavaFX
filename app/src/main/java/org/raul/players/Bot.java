@@ -1,7 +1,7 @@
 package org.raul.players;
 
 import org.raul.App;
-import org.raul.coordinates.Coordinate;
+import org.raul.ticTacToe.Coordinate;
 import org.raul.ticTacToe.TicTacToe;
 
 import java.util.Random;

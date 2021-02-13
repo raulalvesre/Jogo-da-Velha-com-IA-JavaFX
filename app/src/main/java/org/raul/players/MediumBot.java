@@ -1,6 +1,6 @@
 package org.raul.players;
 
-import org.raul.coordinates.Coordinate;
+import org.raul.ticTacToe.Coordinate;
 
 public class MediumBot extends Bot {
 

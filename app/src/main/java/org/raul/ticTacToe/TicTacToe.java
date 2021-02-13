@@ -1,7 +1,6 @@
 package org.raul.ticTacToe;
 import org.raul.controllers.GameGUI;
 import org.raul.controllers.MainMenu;
-import org.raul.coordinates.Coordinate;
 import org.raul.players.*;
 
 import java.util.ArrayList;
