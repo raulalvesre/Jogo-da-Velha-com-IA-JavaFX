@@ -62,11 +62,12 @@ public class GameGUI {
                 }
             }
         }
+
         return null;
     }
 
     @FXML
-    private void handleButtonsGridpane(ActionEvent event) {
+    private void handleFieldButtons(ActionEvent event) {
         Button botaoClicado = (Button) event.getSource();
         int y = GridPane.getRowIndex(botaoClicado);
         int x = GridPane.getColumnIndex(botaoClicado);
@@ -113,7 +114,7 @@ public class GameGUI {
     }
 
     @FXML
-    private void playAgain() {
+    private void handlePlayAgainBt() {
         App.setRoot("mainMenu");
     }
 

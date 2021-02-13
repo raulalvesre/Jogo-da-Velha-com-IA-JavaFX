@@ -41,4 +41,5 @@ public class MainMenu {
     private void exitBtAction() {
         Platform.exit();
     }
+
 }

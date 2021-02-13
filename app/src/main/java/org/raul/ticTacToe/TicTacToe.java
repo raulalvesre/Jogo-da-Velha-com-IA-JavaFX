@@ -63,7 +63,6 @@ public class TicTacToe {
                 guiController.makePlayAgainBtVisible();
                 break;
             }
-
         }
     }
 
@@ -181,6 +180,7 @@ public class TicTacToe {
                 return true;
             }
         }
+
         return false;
     }
 
@@ -217,8 +217,8 @@ public class TicTacToe {
             if (quantosNaDiag == 3) {
                 return true;
             }
-
         }
+
         return false;
     }
 
@@ -286,7 +286,6 @@ public class TicTacToe {
         }
 
         return null;
-
     }
 
     public Coordinate playerWinnerCoordinateInAColumn(String whichPlayer) {
@@ -336,19 +335,15 @@ public class TicTacToe {
                     vaziosNaDiag++;
                     linhaDaCoordenadaVazia = Math.abs((i * 2) - j);
                     colunaDaCoordenadaVazia = j;
-
                 }
-
             }
 
             if (aliadosNaDiag== 2 && vaziosNaDiag == 1) {
                 return new Coordinate(linhaDaCoordenadaVazia, colunaDaCoordenadaVazia);
             }
-
         }
 
         return null;
-
     }
 
     public void setHumanTurn(boolean isIt) {

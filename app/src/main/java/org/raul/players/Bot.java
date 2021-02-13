@@ -11,7 +11,6 @@ public abstract class Bot implements Player {
     protected TicTacToe ticTacToe;
     protected String me;
     protected String enemy;
-    protected String myLevel = "";
     protected Random random;
 
     public Bot(String me, String enemy) {

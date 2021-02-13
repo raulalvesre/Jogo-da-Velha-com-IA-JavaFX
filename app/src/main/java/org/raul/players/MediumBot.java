@@ -6,7 +6,6 @@ public class MediumBot extends Bot {
 
     public MediumBot(String iAm, String enemyIs) {
         super(iAm, enemyIs);
-        myLevel = "medium";
     }
 
     @Override

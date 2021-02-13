@@ -9,7 +9,6 @@ public class HardBot extends Bot {
 
     public HardBot(String iAm, String enemyIs) {
         super(iAm, enemyIs);
-        myLevel = "hard";
     }
 
     private class CoordinateWithScore extends Coordinate {
