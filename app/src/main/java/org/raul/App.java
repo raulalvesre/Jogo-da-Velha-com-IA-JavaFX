@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
-import org.raul.tictactoe.TicTacToe;
+import org.raul.ticTacToe.TicTacToe;
 
 import java.io.IOException;
 

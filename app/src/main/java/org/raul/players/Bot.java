@@ -2,7 +2,7 @@ package org.raul.players;
 
 import org.raul.App;
 import org.raul.coordinates.Coordinate;
-import org.raul.tictactoe.TicTacToe;
+import org.raul.ticTacToe.TicTacToe;
 
 import java.util.Random;
 
@@ -26,7 +26,7 @@ public abstract class Bot implements Player {
             int x = random.nextInt(3);
             int y = random.nextInt(3);
 
-            if (ticTacToe.isCoordenadaVazia(y, x)) {
+            if (ticTacToe.isCoordinateEmpty(y, x)) {
                 return new Coordinate(y, x);
             }
         }

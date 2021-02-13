@@ -1,4 +1,4 @@
-package org.raul.tictactoe;
+package org.raul.ticTacToe;
 import org.raul.controllers.GameGUI;
 import org.raul.controllers.MainMenu;
 import org.raul.coordinates.Coordinate;
@@ -11,14 +11,15 @@ import java.util.concurrent.locks.ReentrantLock;
 
 
 public class TicTacToe {
+
     private GameGUI guiController;
-    String[][] gameField;
+    private String[][] gameField;
     int turno;
     private Player playerX;
     private Player playerO;
     private final Lock lock = new ReentrantLock();
     public Condition humanTurnCondition = lock.newCondition();
-    private boolean humanTurn;
+    private boolean isHumanTurn;
 
     public TicTacToe() {
         gameField = new String[][]{{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};
@@ -42,7 +43,7 @@ public class TicTacToe {
             }
 
             playerXTurn();
-            if (jogoAcabou()) {
+            if (gameIsOver()) {
                 guiController.disableFieldButtons();
                 guiController.makePlayAgainBtVisible();
                 break;
@@ -57,7 +58,7 @@ public class TicTacToe {
             }
 
             playerOTurn();
-            if (jogoAcabou()) {
+            if (gameIsOver()) {
                 guiController.disableFieldButtons();
                 guiController.makePlayAgainBtVisible();
                 break;
@@ -93,7 +94,7 @@ public class TicTacToe {
         if (Bot.class.isAssignableFrom(playerX.getClass())) {
             markCoordinate(playerX.pickCoordinate());
         } else {
-            humanTurn = true;
+            isHumanTurn = true;
             playerX.pickCoordinate();
         }
     }
@@ -102,9 +103,13 @@ public class TicTacToe {
         if (Bot.class.isAssignableFrom(playerO.getClass())) {
             markCoordinate(playerO.pickCoordinate());
         } else {
-            humanTurn = true;
+            isHumanTurn = true;
             playerO.pickCoordinate();
         }
+    }
+
+    public Lock getLock() {
+        return lock;
     }
 
     public void markCoordinate(Coordinate coordinate) {
@@ -116,7 +121,7 @@ public class TicTacToe {
     public void markCoordinate(int y, int x) {
         String player = turno % 2 != 0 ? "X" : "O";
 
-        if (isCoordenadaVazia(y, x)) {
+        if (isCoordinateEmpty(y, x)) {
             gameField[y][x] = player;
             guiController.setButtonText(y, x, player);
             turno++;
@@ -129,19 +134,17 @@ public class TicTacToe {
         gameField[y][x] = whichPlayer;
     }
 
-    public void printField() {
-        System.out.println("---------");
-        for (int y = 0; y < 3; y++) {
-            System.out.print("| ");
-            for (int x = 0; x < 3; x++) {
-                System.out.print(gameField[y][x] + " ");
-            }
-            System.out.println("|");
-        }
-        System.out.println("---------");
+    public boolean isCoordinateEmpty(Coordinate coordinate) {
+        int x = coordinate.getX();
+        int y = coordinate.getY();
+        return isCoordinateEmpty(y, x);
     }
 
-    public boolean jogoAcabou() {
+    public boolean isCoordinateEmpty(int y, int x) {
+        return gameField[y][x].equals(" ");
+    }
+
+    public boolean gameIsOver() {
         if (playerWon("X")) {
             guiController.makeMsgLblStrong();
             guiController.changeMsgLblText("X WON!!!");
@@ -239,17 +242,11 @@ public class TicTacToe {
         for (int y = 0; y < 3; y++) {
             for (int x = 0; x < 3; x++) {
                 Coordinate coordinate = new Coordinate(y, x);
-                if (coordinateIsEmpty(coordinate)) emptyCoordinates.add(coordinate);
+                if (isCoordinateEmpty(coordinate)) emptyCoordinates.add(coordinate);
             }
         }
 
         return emptyCoordinates;
-    }
-
-    public boolean coordinateIsEmpty(Coordinate coordinate) {
-        int x = coordinate.getX();
-        int y = coordinate.getY();
-        return gameField[y][x].equals(" ");
     }
 
     public Coordinate playerWinnerCoordinate(String whichPlayer) {
@@ -354,20 +351,11 @@ public class TicTacToe {
 
     }
 
-    public boolean isCoordenadaVazia(int y, int x) {
-        return gameField[y][x].isBlank();
+    public void setHumanTurn(boolean isIt) {
+        isHumanTurn = isIt;
     }
 
-    public void setHumanTurn (boolean isIt) {
-        humanTurn = isIt;
+    public boolean isHumanTurn() {
+        return isHumanTurn;
     }
-
-    public boolean isHumanPlayerTurn() {
-        return humanTurn;
-    }
-
-    public Lock getLock() {
-        return lock;
-    }
-
 }

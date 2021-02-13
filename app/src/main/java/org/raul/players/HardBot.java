@@ -1,7 +1,7 @@
 package org.raul.players;
 
 import org.raul.coordinates.Coordinate;
-import org.raul.tictactoe.TicTacToe;
+import org.raul.ticTacToe.TicTacToe;
 
 import java.util.ArrayList;
 

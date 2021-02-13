@@ -10,12 +10,11 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
 import org.raul.App;
-import org.raul.tictactoe.TicTacToe;
+import org.raul.ticTacToe.TicTacToe;
 
 public class GameGUI {
 
     private TicTacToe ticTacToe;
-
     @FXML
     private Label msgLbl;
     @FXML
@@ -72,8 +71,8 @@ public class GameGUI {
         int y = GridPane.getRowIndex(botaoClicado);
         int x = GridPane.getColumnIndex(botaoClicado);
 
-        if (ticTacToe.isCoordenadaVazia(y, x)) {
-            if (ticTacToe.isHumanPlayerTurn()) {
+        if (ticTacToe.isCoordinateEmpty(y, x)) {
+            if (ticTacToe.isHumanTurn()) {
                 msgLbl.setText("");
                 ticTacToe.markCoordinate(y, x);
                 ticTacToe.getLock().lock();
@@ -90,17 +89,8 @@ public class GameGUI {
         }
     }
 
-    public void makePlayAgainBtVisible() {
-        playAgainBt.setVisible(true);
-    }
-
     public void changeMsgLblText(String newMessage) {
         Platform.runLater(() -> msgLbl.setText(newMessage));
-    }
-
-    @FXML
-    private void exitGame() {
-        Platform.exit();
     }
 
     public void makeMsgLblNormal() {
@@ -111,6 +101,15 @@ public class GameGUI {
     public void makeMsgLblStrong() {
         msgLbl.setStyle("-fx-font-weight: bold; " +
                         "-fx-font-size: 50px");
+    }
+
+    @FXML
+    private void exitGame() {
+        Platform.exit();
+    }
+
+    public void makePlayAgainBtVisible() {
+        playAgainBt.setVisible(true);
     }
 
     @FXML
