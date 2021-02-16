@@ -11,14 +11,14 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class TicTacToe {
 
-    private GameGUI guiController;
+    private GameGUI GUIController;
     private String[][] gameField;
     int turno;
     private Player playerX;
     private Player playerO;
     private final Lock lock = new ReentrantLock();
     public Condition humanTurnCondition = lock.newCondition();
-    private boolean isHumanTurn;
+    private boolean humanTurn;
 
     public TicTacToe() {
         gameField = new String[][]{{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};
@@ -26,46 +26,22 @@ public class TicTacToe {
     }
     
     public void setGUIController(GameGUI guiController) {
-        this.guiController = guiController;
+        this.GUIController = guiController;
     }
 
     public void startGame() {
-        setarJogadores();
+        setPlayers();
 
         while (true) {
-            if (Bot.class.isAssignableFrom(playerX.getClass())) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    break;
-                }
-            }
-
-            playerXTurn();
+            gameTurn();
             if (gameIsOver()) {
-                guiController.disableFieldButtons();
-                guiController.makePlayAgainBtVisible();
-                break;
-            }
-
-            if (Bot.class.isAssignableFrom(playerO.getClass())) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    break;
-                }
-            }
-
-            playerOTurn();
-            if (gameIsOver()) {
-                guiController.disableFieldButtons();
-                guiController.makePlayAgainBtVisible();
+                GUIController.gameIsOver();
                 break;
             }
         }
     }
 
-    public void setarJogadores() {
+    public void setPlayers() {
         setPlayerX();
         setPlayerO();
     }
@@ -88,22 +64,11 @@ public class TicTacToe {
         }
     }
 
-    private void playerXTurn() {
-        if (Bot.class.isAssignableFrom(playerX.getClass())) {
-            markCoordinate(playerX.pickCoordinate());
-        } else {
-            isHumanTurn = true;
-            playerX.pickCoordinate();
-        }
-    }
+    private void gameTurn() {
+        Player player = turno % 2 != 0 ? playerX : playerO;
+        Coordinate playerChosenCoordinate = player.pickCoordinate();
 
-    private void playerOTurn() {
-        if (Bot.class.isAssignableFrom(playerO.getClass())) {
-            markCoordinate(playerO.pickCoordinate());
-        } else {
-            isHumanTurn = true;
-            playerO.pickCoordinate();
-        }
+        if (playerChosenCoordinate != null) markCoordinate(playerChosenCoordinate);
     }
 
     public Lock getLock() {
@@ -121,7 +86,7 @@ public class TicTacToe {
 
         if (isCoordinateEmpty(y, x)) {
             gameField[y][x] = player;
-            guiController.setButtonText(y, x, player);
+            GUIController.setButtonText(y, x, player);
             turno++;
         }
     }
@@ -144,16 +109,16 @@ public class TicTacToe {
 
     public boolean gameIsOver() {
         if (playerWon("X")) {
-            guiController.makeMsgLblStrong();
-            guiController.changeMsgLblText("X WON!!!");
+            GUIController.makeMsgLblStrong();
+            GUIController.changeMsgLblText("X WON!!!");
             return true;
         } else if (playerWon("O")) {
-            guiController.makeMsgLblStrong();
-            guiController.changeMsgLblText("O WON!!!");
+            GUIController.makeMsgLblStrong();
+            GUIController.changeMsgLblText("O WON!!!");
             return true;
         } else if (draw()) {
-            guiController.makeMsgLblStrong();
-            guiController.changeMsgLblText("DRAW!!!");
+            GUIController.makeMsgLblStrong();
+            GUIController.changeMsgLblText("DRAW!!!");
             return true;
         }
 
@@ -255,11 +220,10 @@ public class TicTacToe {
 
         if (inARow != null) return inARow;
         else if (inAColumn != null) return inAColumn;
-        else if (inADiag != null) return inADiag;
-        else return null;
+        else return inADiag;
     }
 
-    public Coordinate playerWinnerCoordinateInARow(String whichPlayer) {
+    private Coordinate playerWinnerCoordinateInARow(String whichPlayer) {
         int aliadosNaLinha;
         int vaziosNaLinha;
         int xDaCoordenadaVazia;
@@ -287,7 +251,7 @@ public class TicTacToe {
         return null;
     }
 
-    public Coordinate playerWinnerCoordinateInAColumn(String whichPlayer) {
+    private Coordinate playerWinnerCoordinateInAColumn(String whichPlayer) {
         int aliadosNaColuna;
         int vaziosNaColuna;
         int yDaCoordenadaVazia;
@@ -315,7 +279,7 @@ public class TicTacToe {
         return null;
     }
 
-    public Coordinate playerWinnerCoordinateInADiag(String whichPlayer) {
+    private Coordinate playerWinnerCoordinateInADiag(String whichPlayer) {
         int aliadosNaDiag;
         int vaziosNaDiag = 0;
         int linhaDaCoordenadaVazia;
@@ -346,10 +310,10 @@ public class TicTacToe {
     }
 
     public void setHumanTurn(boolean isIt) {
-        isHumanTurn = isIt;
+        humanTurn = isIt;
     }
 
     public boolean isHumanTurn() {
-        return isHumanTurn;
+        return humanTurn;
     }
 }

@@ -31,4 +31,12 @@ public abstract class Bot implements Player {
         }
     }
 
+    protected void takeEasyForALittleWhile() {
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

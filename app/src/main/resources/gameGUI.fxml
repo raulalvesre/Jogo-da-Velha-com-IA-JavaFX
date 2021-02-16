@@ -18,39 +18,39 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button id="bt00" maxHeight="84.0" maxWidth="84.0" mnemonicParsing="false" onAction="#handleFieldButtons" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <Button id="bt00" maxHeight="84.0" maxWidth="84.0" mnemonicParsing="false" onAction="#handleGameFieldButtons" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
                <font>
                   <Font name="System Bold" size="39.0" />
                </font></Button>
-            <Button id="bt01" mnemonicParsing="false" onAction="#handleFieldButtons" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <Button id="bt01" mnemonicParsing="false" onAction="#handleGameFieldButtons" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
                 <font>
                     <Font name="System Bold" size="39.0" />
                 </font></Button>
-            <Button id="bt02" mnemonicParsing="false" onAction="#handleFieldButtons" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="0">
+            <Button id="bt02" mnemonicParsing="false" onAction="#handleGameFieldButtons" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="0">
                <font>
                   <Font name="System Bold" size="39.0" />
                </font></Button>
-            <Button id="bt10" mnemonicParsing="false" onAction="#handleFieldButtons" prefHeight="135.0" prefWidth="167.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <Button id="bt10" mnemonicParsing="false" onAction="#handleGameFieldButtons" prefHeight="135.0" prefWidth="167.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
                 <font>
                     <Font name="System Bold" size="39.0" />
                 </font></Button>
-            <Button id="bt11" mnemonicParsing="false" onAction="#handleFieldButtons" prefHeight="163.0" prefWidth="167.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button id="bt11" mnemonicParsing="false" onAction="#handleGameFieldButtons" prefHeight="163.0" prefWidth="167.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                 <font>
                     <Font name="System Bold" size="39.0" />
                 </font></Button>
-            <Button id="bt12" mnemonicParsing="false" onAction="#handleFieldButtons" prefHeight="148.0" prefWidth="166.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button id="bt12" mnemonicParsing="false" onAction="#handleGameFieldButtons" prefHeight="148.0" prefWidth="166.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                 <font>
                     <Font name="System Bold" size="39.0" />
                 </font></Button>
-            <Button id="bt20" mnemonicParsing="false" onAction="#handleFieldButtons" prefHeight="170.0" prefWidth="167.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
+            <Button id="bt20" mnemonicParsing="false" onAction="#handleGameFieldButtons" prefHeight="170.0" prefWidth="167.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
                 <font>
                     <Font name="System Bold" size="39.0" />
                 </font></Button>
-            <Button id="bt21" mnemonicParsing="false" onAction="#handleFieldButtons" prefHeight="131.0" prefWidth="167.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button id="bt21" mnemonicParsing="false" onAction="#handleGameFieldButtons" prefHeight="131.0" prefWidth="167.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                 <font>
                     <Font name="System Bold" size="39.0" />
                 </font></Button>
-            <Button id="bt22" mnemonicParsing="false" onAction="#handleFieldButtons" prefHeight="178.0" prefWidth="166.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Button id="bt22" mnemonicParsing="false" onAction="#handleGameFieldButtons" prefHeight="178.0" prefWidth="166.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                 <font>
                     <Font name="System Bold" size="39.0" />
                 </font></Button>

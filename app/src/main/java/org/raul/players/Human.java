@@ -14,7 +14,9 @@ public class Human implements Player {
 
     @Override
     public Coordinate pickCoordinate() {
+        ticTacToe.setHumanTurn(true);
         ticTacToe.getLock().lock();
+
         while (ticTacToe.isHumanTurn()) {
             ticTacToe.humanTurnCondition.awaitUninterruptibly();
         }

@@ -22,6 +22,7 @@ public class HardBot extends Bot {
 
     @Override
     public Coordinate pickCoordinate() {
+        takeEasyForALittleWhile();
         return minimax(ticTacToe, me);
     }
 

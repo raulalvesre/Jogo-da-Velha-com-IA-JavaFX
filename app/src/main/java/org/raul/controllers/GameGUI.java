@@ -44,16 +44,6 @@ public class GameGUI {
         Platform.runLater(() -> getGameFieldButton(y, x).setText(text));
     }
 
-    public void disableFieldButtons() {
-        for (int y = 0; y < 3; y++) {
-            for (int x = 0; x < 3; x++) {
-                Button button = getGameFieldButton(y, x);
-                button.setMouseTransparent(true);
-                button.setFocusTraversable(false);
-            }
-        }
-    }
-
     private Button getGameFieldButton(int row, int col) {
         for (Node node : gameField.getChildren()) {
             if (GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row) {
@@ -67,7 +57,7 @@ public class GameGUI {
     }
 
     @FXML
-    private void handleFieldButtons(ActionEvent event) {
+    private void handleGameFieldButtons(ActionEvent event) {
         Button botaoClicado = (Button) event.getSource();
         int y = GridPane.getRowIndex(botaoClicado);
         int x = GridPane.getColumnIndex(botaoClicado);
@@ -90,27 +80,42 @@ public class GameGUI {
         }
     }
 
-    public void changeMsgLblText(String newMessage) {
-        Platform.runLater(() -> msgLbl.setText(newMessage));
-    }
-
     public void makeMsgLblNormal() {
         msgLbl.setStyle("-fx-font-weight: bold; " +
-                        "-fx-font-size: 16px");
+                "-fx-font-size: 16px");
     }
 
     public void makeMsgLblStrong() {
         msgLbl.setStyle("-fx-font-weight: bold; " +
-                        "-fx-font-size: 50px");
+                "-fx-font-size: 50px");
+    }
+
+    public void changeMsgLblText(String newMessage) {
+        Platform.runLater(() -> msgLbl.setText(newMessage));
+    }
+
+    public void gameIsOver() {
+        disableGameFieldButtons();
+        makePlayAgainBtVisible();
+    }
+
+    private void disableGameFieldButtons() {
+        for (int y = 0; y < 3; y++) {
+            for (int x = 0; x < 3; x++) {
+                Button button = getGameFieldButton(y, x);
+                button.setMouseTransparent(true);
+                button.setFocusTraversable(false);
+            }
+        }
+    }
+
+    private void makePlayAgainBtVisible() {
+        playAgainBt.setVisible(true);
     }
 
     @FXML
     private void exitGame() {
         Platform.exit();
-    }
-
-    public void makePlayAgainBtVisible() {
-        playAgainBt.setVisible(true);
     }
 
     @FXML
