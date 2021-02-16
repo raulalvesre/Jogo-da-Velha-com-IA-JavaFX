@@ -13,6 +13,7 @@ public class MediumBot extends Bot {
         Coordinate myWinnerCoordinate = ticTacToe.playerWinnerCoordinate(me);
         Coordinate enemyWinnerCoordinate = ticTacToe.playerWinnerCoordinate(enemy);
 
+        takeEasyForALittleWhile();
         if (myWinnerCoordinate != null) {
             return myWinnerCoordinate;
         } else if (enemyWinnerCoordinate != null) {

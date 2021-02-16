@@ -22,6 +22,7 @@ public class HardBot extends Bot {
 
     @Override
     public Coordinate pickCoordinate() {
+        takeEasyForALittleWhile();
         return minimax(ticTacToe, me);
     }
 
@@ -40,7 +41,7 @@ public class HardBot extends Bot {
 
         int coordinateScore;
         for (Coordinate c : emptySpots) {
-            newTicTacToe.markPlayerInCoordinate(c, player);
+            newTicTacToe.markPlayerInCoordinate(c, player, false);
 
             if (player.equals(me)) {
                 coordinateScore = minimax(newTicTacToe, enemy).score;
@@ -48,7 +49,7 @@ public class HardBot extends Bot {
                 coordinateScore = minimax(newTicTacToe, me).score;
             }
 
-            newTicTacToe.markPlayerInCoordinate(c, " ");
+            newTicTacToe.markPlayerInCoordinate(c, " ", false);
             moves.add(new CoordinateWithScore(c.getY(), c.getX(), coordinateScore));
         }
 
